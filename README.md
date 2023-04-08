@@ -1,6 +1,6 @@
 # nexio-nodejs
 
-This project contains a system that integrates with the Nexio payment processing platform.
+This project contains a system that integrates with the Nexio payment processing platform. It's coded in JavaScript using the node.js runtime environment. It's an express app, that uses axios for the calls to the Nexio system. Then is uses Jest and Supertest for the integration tests, with a little help from nodemon during development.
 
 System Project Set Up
 * install node.js if that is not already install on your machine
