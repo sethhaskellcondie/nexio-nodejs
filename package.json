@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "testOpen": "jest --detectOpenHandles",
-    "devstart": "nodemon server.js"
+    "devstart": "nodemon server.js",
+    "start": "node server"
   },
   "keywords": [],
   "author": "Seth Condie",

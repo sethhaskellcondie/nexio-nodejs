@@ -1,5 +1,9 @@
-// const sdk = require('api')('@nexio/v99#aku22ulf8nw8bx');
-const axios = require('axios');
+/**
+ * handlers.js
+ * This file exports all the code to handle incoming requests
+ * This is where any validation on the request body would be performed
+ */
+const NexioClient = require("../client/nexioClient");
 
 module.exports.heartbeat = (request, response) => {
     //return 200 along with a happy message
@@ -7,30 +11,19 @@ module.exports.heartbeat = (request, response) => {
 }
 
 module.exports.nexioHeartbeat = async (request, response) => {
-    try {
-        let returnJson = "";
-
-        const nexioResponse = await axios.get("https://api.nexiopaysandbox.com/user/v3/account/whoAmI", {
-            headers: {
-                "Authorization": "Basic dXNlcl85OTY1YzllMDY5ZWQ0NjliOWQ3NmE2MjM2ZDVlYzE0MTphcGlLZXlfVUR6dzBKTlF1MjJuSk8=",
-                "Accept": "application/json"
-            }
-        });
-        returnJson = nexioResponse.data;
-        response.send(returnJson);
-    } catch (err) {
-        console.error(err);
-    }
+    let client = new NexioClient();
+    let nexioResponse = await client.heartbeat();
+    response.send(nexioResponse);
 }
 
 module.exports.transactions = async (request, response) => {
-    let returnJson = "";
-    const nexioResponse = await axios.get("https://api.nexiopaysandbox.com/transaction/v3?limit=10&offset=0&currencyId=840", {
-        headers: {
-            "Authorization": "Basic dXNlcl85OTY1YzllMDY5ZWQ0NjliOWQ3NmE2MjM2ZDVlYzE0MTphcGlLZXlfVUR6dzBKTlF1MjJuSk8=",
-            "Accept": "application/json"
-        }
-    });
-    returnJson = nexioResponse.data;
-    response.send(returnJson);
+    let client = new NexioClient();
+    let nexioResponse = await client.transactions();
+    response.send(nexioResponse);
+}
+
+module.exports.process = async (request, response) => {
+    let client = new NexioClient();
+    let nexioResponse = await client.process(request.body);
+    response.send(nexioResponse);
 }
