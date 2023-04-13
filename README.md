@@ -5,7 +5,7 @@ This project contains a system that integrates with the Nexio payment processing
 System Project Set Up
 * install node.js if that is not already install on your machine
      * https://nodejs.org/en/download 
-     * test this by typing node into a command line if install correctly the message `Welcome no Nods.js <version>` will be displayed.
+     * test this by typing node into a command line if install correctly the message `Welcome no Node.js <version>` will be displayed.
 * clone this project to your machine
 * open a command line window in the project directory
      * run the command `$ npm install`
